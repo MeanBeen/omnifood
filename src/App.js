@@ -1,19 +1,24 @@
-import { Layout } from "antd";
+import GlobalStyle from "./globalStyles";
+import { ConfigProvider, Layout } from "antd";
 import Navbar from "./App/Navbar";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./Container/HomePage";
+import { Steps } from "./Components/Steps";
 
 const { Content } = Layout;
 
 const App = () => {
   return (
     <Content>
-      <Navbar />
-
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="homepage" element={<HomePage />} />
-      </Routes>
+      <ConfigProvider>
+        <GlobalStyle />
+        <Navbar />
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="homepage" element={<HomePage />} />
+          <Route path="step" element={<Steps />} />
+        </Routes>
+      </ConfigProvider>
     </Content>
   );
 };
